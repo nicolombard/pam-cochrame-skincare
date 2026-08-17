@@ -72,10 +72,24 @@ ul {
    list-style-type: square;
 }
 
+h3 {
+   color: indianred;
+   margin-bottom: 0;
+
+}
+ .prices {
+   background-color: rgb(226, 211, 197);
+   padding: 2px 20px;
+ }
+
 footer {
    height: 200px;
    background-color: teal;
    color: white;
    text-align: center;
    line-height: 200px;
+}
+
+.fault {
+   color: red;
 }
