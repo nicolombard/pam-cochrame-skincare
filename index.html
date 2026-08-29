@@ -22,13 +22,18 @@
    <meta name="theme-color" content="#ffffff">
 
    <!-- Self-referencing canonical URL ensures search engines index the exact correct page address -->
-   <link rel="canonical" href="https://www.pamcochraneskincare.co.za">
+   <link rel="canonical" href="https://www.pamcochraneskincare.co.za/">
 
    <!-- Site favicon -->
    <link rel="icon" href="images/favicon.ico">
    
    <!-- CSS Stylesheet -->
    <link rel="stylesheet" href="css/styles.css">
+
+   <!-- Google Fonts: Cormorant Garamond & Montserrat -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
    <!-- Open Graph (used for making nice looking external links)-->
    <!-- 
@@ -44,57 +49,133 @@
 
    <!-- SITE HEADER -->
    <header>
-      <!-- Logo wrapped in homepage link for usability & SEO -->
-      <a href="index.html" class="logo-link">
-         <img src="images/pam_cochrane_skincare_logo.svg" alt="Pam Cochrane Skincare Logo" width="351" height="95">
-      </a>
-      
-      <nav>
-         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="treatments.html">Treatments</a></li>
-            <li><a href="contact_us.html">Contact Us</a></li>
-         </ul>
-      </nav>
+      <div class="header-container">
+         <!-- Logo wrapped in homepage link for usability & SEO -->
+         <a href="index.html" class="logo-link">
+            <img src="images/logo/pam-cochrane-skincare-logo.svg" alt="Pam Cochrane Skincare Logo" width="351" height="95">
+         </a>
+         
+         <nav>
+            <ul>
+               <li><a href="index.html" class="active">Home</a></li>
+               <li><a href="treatments.html">Treatments</a></li>
+               <li><a href="about-us.html">About Us</a></li>
+               <li><a href="contact-us.html">Contact</a></li>
+            </ul>
+         </nav>
+      </div>
    </header>
 
-   <main>
-      <!-- HERO BANNER SECTION -->
-      <section class="hero-banner">
-         <div class="hero-content">
-            <h1>Personalised Skincare & Advanced Beauty Therapy</h1>
-            <p>Professional expertise and tailored treatments in Johannesburg.</p>
-         </div>
-      </section>
+   <!-- FULL-WIDTH HERO IMAGE BANNER -->
+   <section class="hero-image-container">
+      <img src="images/salon-main.jpg" alt="Pam Cochrane Skincare Clinic Hero Banner">
 
+      <div class="hero-text-overlay">
+         <h1 class="home-page-headline">Personalised Advanced Skincare Therapy</h1>
+      </div>
+   </section>
+
+   <main>
       <!-- WELCOME / INTRO SECTION -->
       <section class="welcome">
          <h2>Welcome to Pamela Cochrane Skincare</h2>
          <p>
-            Where professional expertise and personalised care come together to support healthy, radiant skin. 
-            Every treatment is thoughtfully tailored to your individual skin needs, delivering advanced skincare solutions to enhance your skin's health and natural beauty.
-         </p>
-      </section>
-   
-     <!-- ABOUT SECTION -->
-      <section class="about-pamela">
-         <h2>About Pamela</h2>
-         <p>
-            State Registered Nurse, LPG Training Technique Therapist, Beauty Specialist Diploma, AMCSA Advanced Mesotherapist, Lamelle Skincare Alchemy Therapist.
+            Where professional expertise and personalised care come together to support healthy, radiant skin.
+            Step into a tranquil, comfortable and warm environment where every treatment is thoughtfully tailored to your individual skin needs, delivering advanced skincare solutions to enhance your skin's health and natural beauty.
          </p>
       </section>
       
       <!-- FEATURED TREATMENTS PREVIEW SECTION -->
-      <section class="treatments-preview">
+      <section class="featured-treatments">
          <h2>Featured Treatments</h2>
-         <p>Explore our specialized facials, body sculpting, and skin restoration procedures.</p>
+         <p>
+            Explore our specialized facials, body sculpting, and skin restoration procedures.
+         </p>
+
+         <!-- 4 FEATURED CARDS WITH UNIQUE IMAGES -->
+         <div class="featured-grid">
+            
+            <!-- Card 1 linking -->
+            <a href="treatments.html#slimming" class="featured-card-link">
+               <div class="featured-card has-banner-overlay">
+                  <img src="images/featured-1.jpg" alt="Featured Treatment 1" class="card-bg-img">
+                  <div class="card-bottom-overlay">
+                     <p>Slimming, Face & Body Sculpting</p>
+                  </div>
+               </div>
+            </a>
+
+            <!-- Card 2 linking -->
+            <a href="treatments.html#skin-treatments" class="featured-card-link">
+               <div class="featured-card has-banner-overlay">
+                  <img src="images/featured-2.jpg" alt="Featured Treatment 2" class="card-bg-img">
+                  <div class="card-bottom-overlay">
+                     <p>Advanced Skin Treatments</p>
+                  </div>
+               </div>
+            </a>
+
+            <!-- Card 3 linking -->
+            <a href="treatments.html#skin-peels" class="featured-card-link">
+               <div class="featured-card has-banner-overlay">
+                  <img src="images/featured-3.jpg" alt="Featured Treatment 3" class="card-bg-img">
+                  <div class="card-bottom-overlay">
+                     <p>Skin Peels, Facials, Laser & Waxing</p>
+                  </div>
+               </div>
+            </a>
+            <!-- Card 4 linking -->
+            <a href="treatments.html#products" class="featured-card-link">
+               <div class="featured-card has-banner-overlay">
+                  <img src="images/featured-4.jpg" alt="Featured Treatment 4" class="card-bg-img">
+                  <div class="card-bottom-overlay">
+                     <p>Skincare Products we Stock</p>
+                  </div>
+               </div>
+            </a>
+         </div>
+
          <a href="treatments.html" class="btn">View All Treatments</a>
       </section>
+
    </main>
 
    <!-- FOOTER -->
-   <footer>
-      <p>&copy; 2026 Pam Cochrane Skincare. All rights reserved.</p>
+   <footer class="site-footer">
+      <div class="footer-container">
+         
+         <!-- Column 1: Brand / Brief Intro -->
+         <div class="footer-col footer-brand">
+            <h2 class="footer-heading">Pam Cochrane Skincare</h2>
+            <p>Personalised, clinical skincare treatments tailored to nourish, restore, and protect your natural skin health.</p>
+         </div>
+
+         <!-- Column 2: Navigation Links -->
+         <div class="footer-col footer-links">
+            <h3 class="footer-subheading">Quick Links</h3>
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="treatments.html">Treatments & Services</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="contact-us.html">Contact & Book</a></li>
+            </ul>
+         </div>
+
+         <!-- Column 3: Contact Details & Hours -->
+         <div class="footer-col footer-contact">
+            <h3 class="footer-subheading">Visit Us</h3>
+            <p>Office 4B Ground Floor, <br>
+               3 Melrose Boulevard, <br>
+               Johannesburg</p>
+            <p>Phone: <a href="tel:+27 82 460 5028">+27 82 460 5028</a></p>
+         </div>
+
+      </div>
+
+      <!-- Bottom Copyright Bar -->
+      <div class="footer-bottom">
+         <p>&copy; 2026 Pam Cochrane Skincare. All rights reserved.</p>
+      </div>
    </footer>
 
 </body>

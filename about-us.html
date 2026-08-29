@@ -22,13 +22,18 @@
    <meta name="theme-color" content="#ffffff">
 
    <!-- Self-referencing canonical URL ensures search engines index the exact correct page address -->
-   <link rel="canonical" href="https://www.pamcochraneskincare.co.za/contact_us.html">
+   <link rel="canonical" href="https://www.pamcochraneskincare.co.za/contact-us.html">
 
    <!-- Site favicon -->
    <link rel="icon" href="images/favicon.ico">
    
    <!-- CSS Stylesheet -->
    <link rel="stylesheet" href="css/styles.css">
+
+   <!-- Google Fonts: Cormorant Garamond & Montserrat -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
    <!-- Open Graph (used for making nice looking external links)-->
    <!-- 
@@ -42,42 +47,39 @@
 
 <body>
 
-   <!-- Header -->
+   <!-- SITE HEADER -->
    <header>
-      <img src="images/pam_cochrane_skincare_logo.svg" alt="Pam Cochrane Skincare Logo" width="351px" height="95px">
-      <nav>
-         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="treatments.html">Treatments</a></li>
-            <li><a href="contact_us.html">Contact Us</a></li>
-         </ul>
-      </nav>
+      <div class="header-container">
+         <!-- Logo wrapped in homepage link for usability & SEO -->
+         <a href="index.html" class="logo-link">
+            <img src="images/logo/pam-cochrane-skincare-logo.svg" alt="Pam Cochrane Skincare Logo" width="351" height="95">
+         </a>
+         
+         <nav>
+            <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="treatments.html">Treatments</a></li>
+               <li><a href="about-us.html" class="active">About Us</a></li>
+               <li><a href="contact-us.html">Contact</a></li>
+            </ul>
+         </nav>
+      </div>
    </header>
 
-   <!-- Banner -->
-   <section>
-      <div class="banner">CONTACT US HEADING GOES HERE.</div>
-      <!-- <img src="images/banner.jpg" alt="Banner Image"> -->
+   <!-- FULL-WIDTH PAGE BANNER -->
+   <section class="page-banner banner-about">
+      <div class="page-banner-content">
+         <h1>About Pam</h1>
+         
+      </div>
    </section>
 
-   <!-- Content  -->
-   <section class="contact_us"></section>
-      <h1>Our Location</h1>
+   <main>
+      <!-- Content here ... -->
       <p>
-         A comfortable warm environment. <br>
-         Easily accessible from Highway, Free Parking on Corner of Melrose Boulevard and Short Street. <br>
-         Situated on the Ground Floor with Lifts. Spacious Office. <br>
-         ADDRESS: Office 4B Ground Floor, 3 Melrose Boulevard <br>
-         PHONE: 082 460 5028
+         Pam is a State Registered Nurse, LPG Training Technique Therapist, AMCSA Advanced Mesotherapist, Lamelle Skincare Alchemy Therapist and has a Beauty Specialist Diploma
       </p>
-   </section>
-   <br>
-   <br>
-   <br>
-
-   <footer>
-      <h3>THE FOOTER GOES HERE</h3>
-   </footer>
+   </main>
 
 </body>
 

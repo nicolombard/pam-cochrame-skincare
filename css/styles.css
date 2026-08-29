@@ -1,91 +1,774 @@
+/* ==========================================================
+   Modern CSS Reset — 2026
+   ========================================================== */
+
+/* 1. Predictable box sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+} 
+
+/* 2. Remove default body margin / Sensible document default sizing */
 html {
-   margin: auto;
-   padding: 0;
-   width: 60%;
-   background-color: rgb(245, 245, 235);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-   font-family: Arial, Helvetica, sans-serif;
-   line-height: 1.5em;
-}
+  margin: 0;
+  min-height: 100dvh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+} 
 
-header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 20px 10px 20px;  
-}
+/* 3. Remove default margins from common content elements */
+h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+  margin: 0;
+} 
 
-header img {
-   display: block;
-   width: 300px;
-   height: auto;
-}
-
-nav ul {
-   display: flex;
-   margin: 0;
-   padding: 0;
-   gap: 1em;
-   list-style: none;
-}
-
-nav a {
-   text-decoration: none;
-   color: teal;
-   font-size: 1.1em;
-   font-weight: 500;
-}
-
-nav a:hover {
-   color: black;
-}
-
-.banner {
-   height: 200px;
-   background-color: teal;
-   color: white;
-   font-size: 2em;
-   text-align: center;
-   line-height: 200px;
-}
-
-h1 {
-   color: white;
-   background-color: teal;
-   padding: 4px 12px;
-   line-height: 1.2em;
-}
-
-h2 {
-   color: teal;
-   margin-bottom: 0;
+/* 4. Make text wrap break more evenly to avoid unbalanced heading breaks or orphan last words in paragraphs */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
 }
 
 p {
-   margin-top: 0.2em;
+  text-wrap: pretty;
 }
 
-ul {
-   margin-top: 0.25em;
-   list-style-type: square;
+/* 5. Make media responsive by default */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+} 
+
+/* 6. Images keep aspect ratio from rule above so it won't distort */
+img, video {
+  height: auto;
 }
 
-h3 {
-   color: indianred;
-   margin-bottom: 0;
+/* 7. Form controls inherit typography */
+input, button, textarea, select {
+  font: inherit;
+} 
 
+/* 8. Prevent long words/URLs from breaking layouts */
+p, h1, h2, h3, h4, h5, h6, li {
+  overflow-wrap: break-word;
+} 
+
+/* 9. Remove list styling only when lists are actually UI */
+ul[role="list"], ol[role="list"] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+} 
+
+/* 10. Buttons and links shouldn't inherit weird cursor behavior */
+button,
+[role="button"] {
+  cursor: pointer;
 }
- .prices {
-   background-color: rgb(226, 211, 197);
-   padding: 2px 20px;
- }
 
-footer {
-   height: 200px;
-   background-color: teal;
-   color: white;
-   text-align: center;
-   line-height: 200px;
+/* ==========================================================
+   DESIGN TOKENS & BRAND VARIABLES
+   ========================================================== */
+:root {
+  /* Brand Palette (RGB) */
+  --clr-teal-light: rgb(145, 225, 230);  /* Light Teal */
+  --clr-teal: rgb(0, 170, 180);          /* Vibrant Teal */
+  --clr-teal-dark: rgb(0, 130, 140);     /* Dark Teal */
+  
+  --clr-salmon: rgb(225, 155, 140);      /* Soft Salmon */
+  --clr-salmon-dark: rgb(220, 125, 100); /* Darker Salmon */
+    
+  --clr-charcoal: rgb(67, 73, 79);       /* Soft Charcoal (Solid Blocks) */
+  --clr-charcoal-dark: rgb(47, 52, 57);  /* Darker Charcoalent (Body Text) */
+  
+  --clr-gold: rgb(210, 180, 80);         /* Soft Gold Accents */
+
+  --clr-pure-white: rgb(255, 255, 255);  /* Pure White */
+  --clr-warm-white: rgb(248, 247, 245);  /* Warm Off-White */
+    
+   /* Brand Typography Tokens */
+  --ff-heading: 'Cormorant Garamond', Georgia, serif;
+  --ff-body: 'Montserrat', 'Helvetica Neue', sans-serif;
+
+  /* Global Layout Maximum Width */
+  --max-width: 1100px;
+}
+
+/* ==========================================================
+   GLOBAL BASE STYLES
+   ========================================================== */
+body {
+  font-family: var(--ff-body);
+  color: var(--clr-charcoal-dark);
+  background-color: var(--clr-warm-white);
+  line-height: 1.6;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4 {
+  font-family: var(--ff-heading);
+  color: var(--clr-teal);
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+  letter-spacing: 0.02em; /* Gives serif titles an airy, spa-like feel */
+}
+
+h1 { font-size: 2.8rem; font-weight: 600; } /* Hero sections & main page titles */
+h2 { font-size: 2.2rem; font-weight: 600; } /* Main section headers */
+h3 { font-size: 1.6rem; font-weight: 500; } /* Treatment category titles */
+h4 { font-size: 1.3rem; font-weight: 600; } /* Specific treatment names or card headers */
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--clr-charcoal-dark);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--clr-teal);
+}
+
+/* Central Page Container */
+main {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* ==========================================================
+   HEADER & NAVIGATION
+   ========================================================== */
+
+/* Full-width background bar (spans 100% of the screen) */
+header {
+  background-color: var(--clr-pure-white);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+/* Inner wrapper (constrains content to 1100px max-width) */
+.header-container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.5rem 0;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Image Sizing */
+.logo-link img {
+  max-width: 210px;
+  height: auto;
+  display: block;
+}
+
+/* Navigation List Layout */
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+/* Navigation Links Container */
+nav a {
+  position: relative;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--clr-charcoal-dark);
+  text-decoration: none;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+/* Animated Underline Base */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--clr-teal-dark);
+  
+  /* Scale width down to 0 and set default exit origin to the right */
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.2s ease-out;
+}
+
+/* Hover State: Slide in from the left */
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Color state changes */
+nav a:hover {
+  color: var(--clr-teal-dark);
+}
+
+/* Persistent underline for active page link */
+nav a.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+nav a.active {
+  color: var(--clr-teal-dark);
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;    /* Centers the logo and nav grid relative to each other */
+    gap: 1rem;
+  }
+
+  nav {
+    width: 100%;            /* Allows full-width centering context */
+    display: flex;
+    justify-content: center; /* Centers the grid block inside nav */
+  }
+
+  nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, auto); /* Fits width tightly to link text */
+    justify-items: center;                  /* Centers each link inside its grid cell */
+    gap: 0.75rem 2rem;                      /* Vertical and horizontal spacing between links */
+    padding: 0;
+  }
+}
+
+/* ==========================================================
+   HERO IMAGE CONTAINER (FULL WIDTH)
+   ========================================================== */
+
+   /* HERO CONTAINER */
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+/* HERO IMAGE */
+.hero-image-container img {
+  width: 100%;
+  height: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+/* HEADLINE TEXT OVERLAY DIV */
+.hero-text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers the headline vertically and horizontally */
+  text-align: center;
+  width: 50%;
+}
+
+/* HEADLINE TEXT OVERLAY HEADING */
+.hero-text-overlay h1 {
+  display: inline-block; /* Forces background to wrap tightly around text width */
+  background-color: color-mix(in srgb, var(--clr-teal) 75%, transparent); /* Transparent backdrop */
+  font-size: 2.5rem;
+  color: var(--clr-warm-white);
+  padding: 1rem 1.6rem; /* Small spacing around the text */
+  text-shadow: 0 0 5px color-mix(in srgb, var(--clr-charcoal-dark) 60%, transparent);
+  border-radius: 4px; /* Rounded corners */
+  margin: 0;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .hero-text-overlay {
+    width: 85%; /* Expands overlay width on small screens to prevent unnecessary text wrapping */
+  }
+  .hero-text-overlay h1 {
+    font-size: 1.6rem; /* Drops font size from 2.4rem to reveal more photo */
+    padding: 0.6rem 1rem; /* Tightens padding so the teal backdrop box takes up less height */
+  }
+}
+
+/* ==========================================================
+   FEATURED TREATMENTS 4-CARD GRID WITH BOTTOM OVERLAYS
+   ========================================================== */
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+/* Ensures the entire card container is fully clickable and spans the grid cell */
+.featured-grid > a {
+  display: block;
+  color: inherit;
+}
+
+.featured-card.has-banner-overlay {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  overflow: hidden;
+  border: none;
+  padding: 0;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Background Image Sizing */
+.featured-card.has-banner-overlay .card-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* 1/3 Height Bottom Overlay with Header-Style Gradient */
+.card-bottom-overlay {
+  position: absolute;
+  bottom: 0.8rem;
+  left: 0.8rem;
+  right: 0.8rem;
+  height: 38%;
+  padding: 0.5rem 0.75rem;
+  
+  /* Flexbox to center text inside the banner */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+
+  /* Matches hero text overlay background & rounded corners */
+  background-color: color-mix(in srgb, var(--clr-teal) 75%, transparent);
+  border-radius: 4px;
+}
+
+.card-bottom-overlay p {
+  color: var(--clr-warm-white);
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0.5rem;
+  text-shadow: 0 0 5px color-mix(in srgb, var(--clr-charcoal-dark) 60%, transparent);
+}
+
+/* Hover Effects */
+.featured-card.has-banner-overlay:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.featured-card.has-banner-overlay:hover .card-bg-img {
+  transform: scale(1.04);
+}
+
+#slimming,
+#skin-treatments,
+#skin-peels,
+#products,
+.treatment-card {
+  scroll-margin-top: 8rem; /* Adds 3rem (or ~48px) of breathing room above the section */
+}
+
+/* RESPONSIVE BREAKPOINTS */
+/* Tablets & Small Laptops (2x2 Grid + 50% Slimmer Banners) */
+@media (max-width: 960px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* Reduce banner height to ~17.5% (half of original 35%) */
+  .card-bottom-overlay {
+    height: 28%;
+    padding: 0.25rem 0.5rem; /* Reduced padding for tighter height */
+  }
+}
+
+/* Mobile Screens (Single Column) */
+@media (max-width: 520px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Optional: Boost height slightly on mobile if needed for larger tap targets */
+  .card-bottom-overlay {
+    height: 25%;
+  }
+}
+
+/* ==========================================================
+   SUB-PAGE TOP BANNERS
+   ========================================================== */
+
+.page-banner {
+  position: relative;
+  width: 100%;
+  min-height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--clr-warm-white);
+  padding: 3rem 1.5rem;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Dark semi-transparent overlay for maximum contrast and readability */
+.page-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--clr-teal-dark) 85%, transparent),
+    color-mix(in srgb, var(--clr-teal) 75%, transparent),
+    color-mix(in srgb, var(--clr-salmon) 75%, transparent),
+    color-mix(in srgb, var(--clr-salmon-dark) 85%, transparent)
+  );
+  z-index: 1;
+}
+
+/* Inner content wrapper stays above overlay */
+.page-banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.page-banner-content h1 {
+  color: var(--clr-warm-white); /* Ensures white title on dark overlay */
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 6px color-mix(in srgb, var(--clr-charcoal-dark) 50%, transparent);
+}
+
+.page-banner-content p {
+  font-size: 1.12rem;
+  margin-bottom: 0;
+  text-shadow: 0 0 5px color-mix(in srgb, var(--clr-charcoal-dark) 70%, transparent);
+}
+
+/* PAGE SPECIFIC BACKGROUND IMAGES */
+.banner-treatments {
+  background-image: url('../images/banner-treatments.jpg');
+}
+
+.banner-about {
+  background-image: url('../images/banner-about.jpg');
+}
+
+.banner-contact {
+  background-image: url('../images/banner-contact.jpg');
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .page-banner {
+    min-height: 180px;
+    padding: 2rem 1rem;
+  }
+  
+  .page-banner-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .page-banner-content p {
+    font-size: 0.95rem;
+  }
+}
+
+/* ==========================================================
+   CATEGORY HEADER/IMAGE BANNER BLOCK
+   ========================================================== */
+
+.category-banner-block {
+  background-color: var(--clr-charcoal-dark);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  border-left: 12px solid var(--clr-salmon); /* Salmon accent bar on left edge */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Left Side: Generous padding & bold text */
+.category-banner-content {
+  flex: 1 1 50%;                  /* Takes 50% width */
+  padding: 3rem 2.5rem;           /* Generous empty space around text */
+  color: var(--clr-warm-white);
+}
+
+.category-banner-content h2 {
+  color: var(--clr-teal);         /* Sea green headline pop on charcoal background */
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.category-banner-desc {
+  font-size: 1rem;
+  font-weight: 400;               /* Bold text next to image */
+  line-height: 1.8;
+  opacity: 0.95;
+  margin-bottom: 0;
+}
+
+/* Right Side: Prominent, larger image area */
+.category-banner-image {
+  flex: 1 1 50%;                 /* Takes 50% width inside the same block */
+  align-self: stretch;           /* Fills full height of charcoal card */
+  min-height: 280px;
+}
+
+.category-banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             /* Crops dynamically without stretching */
+  display: block;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .category-banner-block {
+    flex-direction: column;       /* Stacks content on mobile */
+    gap: 0;
+    border-left: none;
+    border-top: 6px solid var(--clr-salmon); /* Moves accent border to top */
+  }
+
+  .category-banner-content {
+    flex: 1 1 auto;
+    padding: 2rem 1.5rem;         /* Comfortable padding for small screens */
+  }
+
+  .category-banner-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .category-banner-image {
+    width: 100%;
+    min-height: 220px;
+  }
+}
+
+/* ==========================================================
+   TREATMENT CARDS & PRICE BOXES
+   ========================================================== */
+
+.treatment-card {
+  background-color: var(--clr-pure-white);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  padding: 1.75rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.treatment-card h3 {
+  margin-bottom: 1rem;
+}
+
+/* Side-by-Side Flex Layout */
+.treatment-body {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.treatment-content {
+  flex: 1 1 60%; /* Paragraph takes up ~60% of the card */
+}
+
+/* Modern Minimalist Price Box */
+.price-box {
+  flex: 0 0 320px; /* Fixed width for consistent alignment across cards */
+  background-color: var(--clr-teal-light);
+  border-left: 2px solid var(--clr-teal);
+  border-radius: 0 4px 4px 0;
+  padding: 1.25rem 1.5rem;
+}
+
+.price-box h4 {
+  font-size: 1.2rem;
+  color: var(--clr-charcoal-dark);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.price-box p {
+  font-size: 0.95rem;
+  color: var(--clr-charcoal-dark);
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.price-box p:last-child {
+  margin-bottom: 0;
+}
+
+.price-box small {
+  display: block;
+  margin-top: 0.5rem;
+  color: color-mix(in srgb, var(--clr-charcoal-dark) 70%, transparent);
+  font-size: 0.85rem;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .treatment-body {
+    flex-direction: column; /* Stacks text and price box vertically on mobile */
+    gap: 1.25rem;
+  }
+
+  .price-box {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+}
+
+/* WHITE SPACE ON CONTACT PAGE */
+  .white-space {
+    height: 4rem;
+}
+
+/* ==========================================================
+   GLOBAL FOOTER STYLES
+   ========================================================== */
+
+   .site-footer {
+  background-color: var(--clr-charcoal-dark);
+  color: var(--clr-warm-white);
+  padding-top: 3rem;
+  margin-top: auto; /* Keeps footer pushed to bottom on short pages */
+}
+
+.footer-container {
+  width: 90%;                  /* Matches header-container and main width */
+  max-width: var(--max-width); /* Matches global layout width */
+  margin: 0 auto;              /* Centers the container horizontally */
+  padding: 0 0 2.5rem 0;
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.footer-col {
+  flex: 1 1 250px; /* Grow/shrink evenly, basis of 250px before wrapping */
+}
+
+/* Headings */
+.footer-heading {
+  font-size: 1.4rem;
+  color: var(--clr-teal);
+  margin-bottom: 0.75rem;
+}
+
+.footer-subheading {
+  font-size: 1.1rem;
+  color: var(--clr-warm-white);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.footer-col p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+}
+
+/* Navigation Lists */
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a,
+.footer-contact a {
+  color: var(--clr-warm-white);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+  color: var(--clr-teal);
+  opacity: 1;
+}
+
+/* Bottom Copyright Strip */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 1.25rem 1.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 2rem; /* Clean, even gap between stacked columns */
+  }
+
+  .footer-col {
+    flex: 1 1 auto; /* Removes the 250px height requirement on mobile */
+  }
+
+  /* Removes extra bottom margin on the last paragraph/list in each column */
+  .footer-col p:last-child,
+  .footer-col ul {
+    margin-bottom: 0;
+  }
+
+  .footer-heading,
+  .footer-subheading {
+    margin-bottom: 0.35rem; /* Tightens space right below the titles */
+  }
 }
