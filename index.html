@@ -30,6 +30,9 @@
    <!-- CSS Stylesheet -->
    <link rel="stylesheet" href="css/styles.css">
 
+   <!-- JavaScript File linked in Head with 'defer' -->
+   <script src="js/script.js" defer></script>
+
    <!-- Google Fonts: Cormorant Garamond & Montserrat -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +48,7 @@
 
 </head>
 
-<body>
+<body class="home-page">
 
    <!-- SITE HEADER -->
    <header>
@@ -59,7 +62,7 @@
             <ul>
                <li><a href="index.html" class="active">Home</a></li>
                <li><a href="treatments.html">Treatments</a></li>
-               <li><a href="about-us.html">About Us</a></li>
+               <li><a href="gallery.html">Gallery</a></li>
                <li><a href="contact-us.html">Contact</a></li>
             </ul>
          </nav>
@@ -78,66 +81,97 @@
    <main>
       <!-- WELCOME / INTRO SECTION -->
       <section class="welcome">
-         <h2>Welcome to Pamela Cochrane Skincare</h2>
+         <h2>Welcome to Pam Cochrane Skincare</h2>
          <p>
             Where professional expertise and personalised care come together to support healthy, radiant skin.
             Step into a tranquil, comfortable and warm environment where every treatment is thoughtfully tailored to your individual skin needs, delivering advanced skincare solutions to enhance your skin's health and natural beauty.
          </p>
       </section>
       
-      <!-- FEATURED TREATMENTS PREVIEW SECTION -->
-      <section class="featured-treatments">
-         <h2>Featured Treatments</h2>
-         <p>
-            Explore our specialized facials, body sculpting, and skin restoration procedures.
-         </p>
-
-         <!-- 4 FEATURED CARDS WITH UNIQUE IMAGES -->
-         <div class="featured-grid">
+      <!-- ABOUT SECTION (25% Image Left, 75% Content Right) -->
+      <section class="about-section">
+         
+         <!-- Top 25/75 Float Grid -->
+         <div class="about-grid">
+            <div class="about-image">
+               <img src="images/about-us/pam-cochrane2.jpeg" alt="Pam Cochrane">
+            </div>
             
-            <!-- Card 1 linking -->
-            <a href="treatments.html#slimming" class="featured-card-link">
-               <div class="featured-card has-banner-overlay">
-                  <img src="images/featured-1.jpg" alt="Featured Treatment 1" class="card-bg-img">
-                  <div class="card-bottom-overlay">
-                     <p>Slimming, Face & Body Sculpting</p>
-                  </div>
-               </div>
-            </a>
-
-            <!-- Card 2 linking -->
-            <a href="treatments.html#skin-treatments" class="featured-card-link">
-               <div class="featured-card has-banner-overlay">
-                  <img src="images/featured-2.jpg" alt="Featured Treatment 2" class="card-bg-img">
-                  <div class="card-bottom-overlay">
-                     <p>Advanced Skin Treatments</p>
-                  </div>
-               </div>
-            </a>
-
-            <!-- Card 3 linking -->
-            <a href="treatments.html#skin-peels" class="featured-card-link">
-               <div class="featured-card has-banner-overlay">
-                  <img src="images/featured-3.jpg" alt="Featured Treatment 3" class="card-bg-img">
-                  <div class="card-bottom-overlay">
-                     <p>Skin Peels, Facials, Laser & Waxing</p>
-                  </div>
-               </div>
-            </a>
-            <!-- Card 4 linking -->
-            <a href="treatments.html#products" class="featured-card-link">
-               <div class="featured-card has-banner-overlay">
-                  <img src="images/featured-4.jpg" alt="Featured Treatment 4" class="card-bg-img">
-                  <div class="card-bottom-overlay">
-                     <p>Skincare Products we Stock</p>
-                  </div>
-               </div>
-            </a>
+            <div class="about-content">
+               <h3>About Pam</h3>
+               <p>
+                  Pamela Cochrane Therapy was founded in 2001 and has been providing innovative treatments based on proven technology and products for two and a half decades.
+                  With SRN qualifications and beauty therapist status, Pamela Cochrane does the treatments herself, and is able to provide treatments that are out of the range of ordinary beauty salons.
+               </p>
+               <p>
+                  Treatments are results driven and a large contingent of clients can attest to the benefits of Pam Cochrane’s treatments, being either a smoother face or more contoured, slimmer, healthier looking body.
+                  With decades of experience Pam herself tailors treatment protocols and products to a client’s individual requests or requirements.
+               </p>
+               <p>
+                  Pam continually selects new technology for treatments and products that provide results with cost effectiveness in mind.
+                  Clients can book for a schedule of targeted treatments, or just for a single treatment for maintenance purposes.
+               </p>
+            </div>
          </div>
 
-         <a href="treatments.html" class="btn">View All Treatments</a>
+         <!-- Qualifications Logos Grid underneath -->
+         <div class="qualifications-grid">
+            
+            <div class="qualification-card">
+               <div class="logo-container">
+                  <img src="images/logo/itec-logo.jpg" alt="ITEC Logo">
+               </div>
+               <p>ITEC Beauty Specialist Diploma.</p>
+            </div>
+
+            <div class="qualification-card">
+               <div class="logo-container">
+                  <img src="images/logo/sanc-logo.jpg" alt="SANC Logo">
+               </div>
+               <p>South African Nursing Council State Registered Nurse.</p>
+            </div>
+
+            <div class="qualification-card">
+               <div class="logo-container">
+                  <img src="images/logo/amcsa-logo.jpg" alt="AMCSA Logo">
+               </div>
+               <p>AMCSA Aesthetic Medicine Congress South Africa - Advanced Mesotherapy Course.</p>
+            </div>
+
+            <div class="qualification-card">
+               <div class="logo-container">
+                  <img src="images/logo/lamelle-logo.jpg" alt="Lamelle Logo">
+               </div>
+               <p>Lamelle Skin Alchemy Expert - Certificate of Excellence.</p>
+            </div>
+         </div>
       </section>
 
+      <section class="salon-gallery">
+         <h2>Welcome to Our Salon</h2>
+         <p>A look around our salon and treatment rooms.</p>
+
+         <div class="salon-gallery-grid">
+            <div class="gallery-item"><img src="images/about-us/salon-1.jpg" alt="Salon Image 1"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-2.jpg" alt="Salon Image 2"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-3.jpg" alt="Salon Image 3"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-4.jpg" alt="Salon Image 4"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-5.jpg" alt="Salon Image 5"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-6.jpg" alt="Salon Image 6"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-7.jpg" alt="Salon Image 7"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-8.jpg" alt="Salon Image 8"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-9.jpg" alt="Salon Image 9"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-10.jpg" alt="Salon Image 10"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-11.jpg" alt="Salon Image 11"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-12.jpg" alt="Salon Image 12"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-13.jpg" alt="Salon Image 13"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-14.jpg" alt="Salon Image 14"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-15.jpg" alt="Salon Image 15"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-16.jpg" alt="Salon Image 16"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-17.jpg" alt="Salon Image 17"></div>
+            <div class="gallery-item"><img src="images/about-us/salon-18.jpg" alt="Salon Image 18"></div>
+         </div>
+      </section>
    </main>
 
    <!-- FOOTER -->
@@ -177,6 +211,13 @@
          <p>&copy; 2026 Pam Cochrane Skincare. All rights reserved.</p>
       </div>
    </footer>
+
+   <!-- Back to Top Button -->
+   <button id="backToTopBtn" aria-label="Back to top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+         <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+   </button>
 
 </body>
 

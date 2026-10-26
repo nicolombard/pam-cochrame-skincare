@@ -12,13 +12,15 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-behavior: smooth;
+  overflow-x: clip; /* Clip prevents horizontal scrollbars WITHOUT breaking position: sticky */
 }
 
 body {
   margin: 0;
   min-height: 100dvh;
-  line-height: 1.5;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip; /* Keeps sticky headers working cleanly across modern browsers */
 } 
 
 /* 3. Remove default margins from common content elements */
@@ -56,8 +58,8 @@ p, h1, h2, h3, h4, h5, h6, li {
   overflow-wrap: break-word;
 } 
 
-/* 9. Remove list styling only when lists are actually UI */
-ul[role="list"], ol[role="list"] {
+/* 9. Remove default list styling across UI */
+ul, ol {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -81,8 +83,8 @@ button,
   --clr-salmon: rgb(225, 155, 140);      /* Soft Salmon */
   --clr-salmon-dark: rgb(220, 125, 100); /* Darker Salmon */
     
-  --clr-charcoal: rgb(67, 73, 79);       /* Soft Charcoal (Solid Blocks) */
-  --clr-charcoal-dark: rgb(47, 52, 57);  /* Darker Charcoalent (Body Text) */
+  --clr-charcoal: rgb(67, 73, 79);       /* Soft Charcoal */
+  --clr-charcoal-dark: rgb(40, 46, 52);  /* Dark Charcoal */
   
   --clr-gold: rgb(210, 180, 80);         /* Soft Gold Accents */
 
@@ -94,7 +96,7 @@ button,
   --ff-body: 'Montserrat', 'Helvetica Neue', sans-serif;
 
   /* Global Layout Maximum Width */
-  --max-width: 1100px;
+  --max-width: 1200px;
 }
 
 /* ==========================================================
@@ -102,7 +104,7 @@ button,
    ========================================================== */
 body {
   font-family: var(--ff-body);
-  color: var(--clr-charcoal-dark);
+  color: var(--clr-charcoal);
   background-color: var(--clr-warm-white);
   line-height: 1.6;
 }
@@ -126,7 +128,7 @@ p {
 }
 
 a {
-  color: var(--clr-charcoal-dark);
+  color: var(--clr-charcoal);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -149,8 +151,10 @@ main {
 
 /* Full-width background bar (spans 100% of the screen) */
 header {
-  background-color: var(--clr-pure-white);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  background-color: rgba(255, 255, 255, 0.84); /* Semi-transparent white */
+  backdrop-filter: blur(12px);                   /* Applies the frosted glass blur */
+  -webkit-backdrop-filter: blur(12px);           /* Safari support */
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   width: 100%;
@@ -163,7 +167,6 @@ header {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 1.5rem 0;
-  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -188,7 +191,7 @@ nav a {
   position: relative;
   font-size: 1rem;
   font-weight: 400;
-  color: var(--clr-charcoal-dark);
+  color: var(--clr-charcoal);
   text-decoration: none;
   padding-bottom: 4px;
   display: inline-block;
@@ -204,7 +207,7 @@ nav a::after {
   height: 1px;
   background-color: var(--clr-teal-dark);
   
-  /* Scale width down to 0 and set default exit origin to the right */
+/* Scale width down to 0 and set default exit origin to the right */
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.2s ease-out;
@@ -258,12 +261,13 @@ nav a.active {
    HERO IMAGE CONTAINER (FULL WIDTH)
    ========================================================== */
 
-   /* HERO CONTAINER */
+/* HERO CONTAINER */
 .hero-image-container {
   position: relative;
   width: 100%;
   max-height: 500px;
   overflow: hidden;
+  border-bottom: 3px solid var(--clr-warm-white);
 }
 
 /* HERO IMAGE */
@@ -292,7 +296,7 @@ nav a.active {
   font-size: 2.5rem;
   color: var(--clr-warm-white);
   padding: 1rem 1.6rem; /* Small spacing around the text */
-  text-shadow: 0 0 5px color-mix(in srgb, var(--clr-charcoal-dark) 60%, transparent);
+  text-shadow: 0 0 5px color-mix(in srgb, var(--clr-charcoal) 60%, transparent);
   border-radius: 4px; /* Rounded corners */
   margin: 0;
 }
@@ -309,7 +313,26 @@ nav a.active {
 }
 
 /* ==========================================================
-   FEATURED TREATMENTS 4-CARD GRID WITH BOTTOM OVERLAYS
+   TREATMENTS | TREATMENT CATEGORY HEADER SECTION
+   ========================================================== */
+
+.featured-treatments {
+  margin: 3rem auto auto;
+}
+
+/* Adds a short decorative divider at the bottom of any section */
+.featured-treatments::after {
+  content: '';
+  display: block;
+  width: 220px; /* Short width */
+  height: 1px;
+  background-color: var(--clr-teal);
+  margin: 6rem auto 0 auto; /* Centers it horizontally */
+  border-radius: 2px;
+}
+
+/* ==========================================================
+   TREATMENTS | FEATURED TREATMENTS 4-CARD GRID WITH OVERLAYS
    ========================================================== */
 
 .featured-grid {
@@ -333,7 +356,7 @@ nav a.active {
   border: none;
   padding: 0;
   display: block;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -343,7 +366,7 @@ nav a.active {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.3s ease;
 }
 
 /* 1/3 Height Bottom Overlay with Header-Style Gradient */
@@ -373,13 +396,13 @@ nav a.active {
   line-height: 1.4;
   margin: 0;
   padding: 0.5rem;
-  text-shadow: 0 0 5px color-mix(in srgb, var(--clr-charcoal-dark) 60%, transparent);
+  text-shadow: 0 0 5px color-mix(in srgb, var(--clr-charcoal) 60%, transparent);
 }
 
 /* Hover Effects */
 .featured-card.has-banner-overlay:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .featured-card.has-banner-overlay:hover .card-bg-img {
@@ -437,6 +460,7 @@ nav a.active {
   padding: 3rem 1.5rem;
   background-size: cover;
   background-position: center;
+  border-bottom: 3px solid var(--clr-warm-white);
 }
 
 /* Dark semi-transparent overlay for maximum contrast and readability */
@@ -465,13 +489,13 @@ nav a.active {
   color: var(--clr-warm-white); /* Ensures white title on dark overlay */
   font-size: 3rem;
   margin-bottom: 0.5rem;
-  text-shadow: 0 0 6px color-mix(in srgb, var(--clr-charcoal-dark) 50%, transparent);
+  text-shadow: 0 0 6px color-mix(in srgb, var(--clr-charcoal) 50%, transparent);
 }
 
 .page-banner-content p {
   font-size: 1.12rem;
   margin-bottom: 0;
-  text-shadow: 0 0 5px color-mix(in srgb, var(--clr-charcoal-dark) 70%, transparent);
+  text-shadow: 0 0 5px color-mix(in srgb, var(--clr-charcoal) 70%, transparent);
 }
 
 /* PAGE SPECIFIC BACKGROUND IMAGES */
@@ -504,162 +528,751 @@ nav a.active {
 }
 
 /* ==========================================================
-   CATEGORY HEADER/IMAGE BANNER BLOCK
+   PAGE WATERMARK BACKGROUNDS
    ========================================================== */
 
-.category-banner-block {
-  background-color: var(--clr-charcoal-dark);
-  border-radius: 4px;
-  overflow: hidden;
+/* Sets the background image with fixed positioning and semi-transparency */
+body.home-page {
+  background-image: 
+    linear-gradient(
+      rgba(248, 247, 245, 0.9), 
+      rgba(248, 247, 245, 0.8)
+    ), 
+    url('../images/background-treatment-page.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Sets the background image with fixed positioning and semi-transparency */
+body.treatments-page {
+  background-image: 
+    linear-gradient(
+      rgba(248, 247, 245, 0.9), 
+      rgba(248, 247, 245, 0.8)
+    ), 
+    url('../images/background-treatment-page.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Sets the background image with fixed positioning and semi-transparency */
+body.gallery-page {
+  background-image: 
+    linear-gradient(
+      rgba(248, 247, 245, 0.9), 
+      rgba(248, 247, 245, 0.8)
+    ), 
+    url('../images/background-treatment-page.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Sets the background image with fixed positioning and semi-transparency */
+body.contact-page {
+  background-image: 
+    linear-gradient(
+      rgba(248, 247, 245, 0.9), 
+      rgba(248, 247, 245, 0.8)
+    ), 
+    url('../images/background-treatment-page.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* ==========================================================
+   TREATMENTS | TREATMENT CATEGORY HEADER SECTION
+   ========================================================== */
+
+.category-header {
+  text-align: center;
+  max-width: 960px;
+  margin: 4rem auto 3rem;
+}
+
+.category-header h2 {
+  font-size: 2.4rem;
+  color: var(--clr-teal);
+  margin-bottom: 0.75rem;
+}
+
+.category-header p {
+  font-size: 1.05rem;
+  color: var(--clr-charcoal);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================================
+   TREATMENTS | TREATMENT CARD SPLIT LAYOUT
+   ========================================================== */
+
+/* Outer card container */
+.treatment-card {
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  background-color: var(--clr-pure-white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Alternating image and text positions */
+.treatment-card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* 50/50 split layout for image and body */
+.treatment-card .treatment-image,
+.treatment-card .card-body {
+  flex: 0 0 50%;
+  width: 50%;
+}
+
+/* Image container & image resets */
+.treatment-card .treatment-image {
+  aspect-ratio: 3 / 2;
+  background-color: var(--clr-warm-white);
+  position: relative;
+}
+
+.treatment-card .treatment-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card body layout */
+.treatment-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5rem;
+}
+
+/* Content typography */
+.treatment-card .treatment-content h4 {
+  color: var(--clr-teal);
+  font-size: 1.8rem;
+  margin-top: 0;
   margin-bottom: 1rem;
-  border-left: 12px solid var(--clr-salmon); /* Salmon accent bar on left edge */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* Left Side: Generous padding & bold text */
-.category-banner-content {
-  flex: 1 1 50%;                  /* Takes 50% width */
-  padding: 3rem 2.5rem;           /* Generous empty space around text */
-  color: var(--clr-warm-white);
+.treatment-card .treatment-content p {
+  color: var(--clr-charcoal);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 0.85rem;
 }
 
-.category-banner-content h2 {
-  color: var(--clr-teal);         /* Sea green headline pop on charcoal background */
-  font-size: 2.2rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-.category-banner-desc {
-  font-size: 1rem;
-  font-weight: 400;               /* Bold text next to image */
-  line-height: 1.8;
-  opacity: 0.95;
+.treatment-card .treatment-content p:last-child {
   margin-bottom: 0;
 }
 
-/* Right Side: Prominent, larger image area */
-.category-banner-image {
-  flex: 1 1 50%;                 /* Takes 50% width inside the same block */
-  align-self: stretch;           /* Fills full height of charcoal card */
-  min-height: 280px;
+/* Price Box */
+.treatment-card .price-box {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(67, 73, 79, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.category-banner-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;             /* Crops dynamically without stretching */
-  display: block;
+.treatment-card .price-box p {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: var(--clr-charcoal);
+  font-size: 0.95rem;
+  margin-bottom: 0;
 }
 
-/* MOBILE RESPONSIVENESS */
+/* Duration note */
+.treatment-card .price-box small {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--clr-charcoal);
+  opacity: 0.75;
+  margin-top: 0.25rem;
+}
+
+/* Card content ordered list reset & modern layout */
+.treatment-content ol {
+  list-style: none; /* Removes default browser numbering */
+  counter-reset: custom-counter; /* Initializes custom CSS counter */
+  padding-left: 0;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.treatment-content ol li {
+  counter-increment: custom-counter;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.95rem;
+  color: var(--clr-charcoal);
+}
+
+.treatment-content ol li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Styled number badge */
+.treatment-content ol li::before {
+  content: counter(custom-counter);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: rgba(67, 73, 79, 0.1); /* Subtle neutral background */
+  color: var(--clr-charcoal);
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 50%;                       /* Circular badge */
+  margin-top: 0.1rem;
+}
+
+/* Mobile & Tablet Responsiveness */
 @media (max-width: 768px) {
-  .category-banner-block {
-    flex-direction: column;       /* Stacks content on mobile */
-    gap: 0;
-    border-left: none;
-    border-top: 6px solid var(--clr-salmon); /* Moves accent border to top */
+  .treatment-card,
+  .treatment-card:nth-child(even) {
+    flex-direction: column;
   }
 
-  .category-banner-content {
-    flex: 1 1 auto;
-    padding: 2rem 1.5rem;         /* Comfortable padding for small screens */
-  }
-
-  .category-banner-content h2 {
-    font-size: 1.75rem;
-  }
-
-  .category-banner-image {
+  .treatment-card .treatment-image,
+  .treatment-card .card-body {
     width: 100%;
-    min-height: 220px;
+  }
+
+  .treatment-card .card-body {
+    padding: 1.5rem;
   }
 }
 
 /* ==========================================================
-   TREATMENT CARDS & PRICE BOXES
+   TREATMENTS | PRICE LIST CARDS (25/75 LAYOUT)
    ========================================================== */
 
-.treatment-card {
-  background-color: var(--clr-pure-white);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 4px;
-  padding: 1.75rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+/* 1. Prevent alternating flex layout (keeps image on the left for all price lists) */
+.treatment-card.price-list-card,
+.treatment-card.price-list-card:nth-child(even) {
+  flex-direction: row;
 }
 
-.treatment-card h3 {
-  margin-bottom: 1rem;
+/* 2. Set 25% width for Image and 75% width for Content Body */
+.treatment-card.price-list-card .treatment-image {
+  flex: 0 0 25%;
+  width: 25%;
+  aspect-ratio: auto; /* Lets height match the price list length naturally */
 }
 
-/* Side-by-Side Flex Layout */
-.treatment-body {
+.treatment-card.price-list-card .card-body {
+  flex: 0 0 75%;
+  width: 75%;
+  padding: 2rem;
+}
+
+/* 3. Dotted price list item styling */
+.treatment-card.price-list-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
   display: flex;
-  gap: 2rem;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.treatment-content {
-  flex: 1 1 60%; /* Paragraph takes up ~60% of the card */
-}
-
-/* Modern Minimalist Price Box */
-.price-box {
-  flex: 0 0 320px; /* Fixed width for consistent alignment across cards */
-  background-color: var(--clr-teal-light);
-  border-left: 2px solid var(--clr-teal);
-  border-radius: 0 4px 4px 0;
-  padding: 1.25rem 1.5rem;
-}
-
-.price-box h4 {
-  font-size: 1.2rem;
-  color: var(--clr-charcoal-dark);
-  margin-bottom: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.price-box p {
-  font-size: 0.95rem;
-  color: var(--clr-charcoal-dark);
-  margin-bottom: 0.5rem;
+.treatment-card.price-list-card li {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.95rem;
+  color: var(--clr-charcoal);
+  position: relative;
+}
+
+/* Dotted leader line between item name and price */
+.treatment-card.price-list-card li span {
+  background-color: var(--clr-pure-white);
+  padding-right: 0.5rem;
+  z-index: 1;
+}
+
+.treatment-card.price-list-card li strong {
+  background-color: var(--clr-pure-white);
+  padding-left: 0.5rem;
+  font-weight: 400;
+  color: var(--clr-teal-dark);
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.treatment-card.price-list-card li::after {
+  content: "";
+  position: absolute;
+  bottom: 0.35em;
+  left: 0;
+  right: 0;
+  border-bottom: 1px dotted rgba(67, 73, 79, 0.25);
+  z-index: 0;
+}
+
+/* 4. Mobile Responsiveness (Stacked vertically, matching other cards) */
+@media (max-width: 768px) {
+  .treatment-card.price-list-card,
+  .treatment-card.price-list-card:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .treatment-card.price-list-card .treatment-image,
+  .treatment-card.price-list-card .card-body {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .treatment-card.price-list-card .treatment-image {
+    aspect-ratio: 3 / 2; /* Gives image explicit aspect ratio when stacked vertically on mobile */
+  }
+
+  .treatment-card.price-list-card .card-body {
+    padding: 1.5rem;
+  }
+}
+
+/* ==========================================================
+   PRODUCTS CARD (25/75 LAYOUT & CLEAN LIST OVERRIDE)
+   ========================================================== */
+
+/* 1. Reuse 25/75 structural layout and left-aligned image */
+.treatment-card.price-list-card.products-card {
+  flex-direction: row;
+}
+
+.treatment-card.price-list-card.products-card .treatment-image {
+  flex: 0 0 25%;
+  width: 25%;
+  aspect-ratio: auto;
+}
+
+.treatment-card.price-list-card.products-card .card-body {
+  flex: 0 0 75%;
+  width: 75%;
+  padding: 2rem;
+}
+
+/* 2. Container spacing for product list items */
+.treatment-card.price-list-card.products-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* 3. Remove dotted lines and background highlights */
+.treatment-card.price-list-card.products-card li::after {
+  display: none;
+}
+
+.treatment-card.price-list-card.products-card li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  font-size: 0.95rem;
+  color: var(--clr-charcoal);
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.treatment-card.price-list-card.products-card li span {
+  background-color: transparent;
+  padding-right: 0;
+}
+
+/* 4. Mobile Responsiveness (Stacks vertically on small screens) */
+@media (max-width: 768px) {
+  .treatment-card.price-list-card.products-card {
+    flex-direction: column;
+  }
+
+  .treatment-card.price-list-card.products-card .treatment-image,
+  .treatment-card.price-list-card.products-card .card-body {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .treatment-card.price-list-card.products-card .treatment-image {
+    aspect-ratio: 3 / 2;
+  }
+
+  .treatment-card.price-list-card.products-card .card-body {
+    padding: 1.5rem;
+  }
+}
+
+/* ==========================================================
+   HOME | WELCOME TO PAM COCHRANE SKINCARE SECTION
+   ========================================================== */
+
+.welcome {
+  margin: 2rem auto 4rem;
+}
+
+/* ==========================================================
+   HOME | ABOUT PAM SECTION
+   ========================================================== */
+
+/* Main layout wrapper */
+.about-section {
+  margin: 6rem 0 4rem 0;
+}
+
+/* 25% / 75% Open Background Split */
+.about-grid {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  margin-bottom: 4rem;
+}
+
+.about-image {
+  flex: 0 0 25%;
+  width: 25%;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.about-content {
+  flex: 0 0 calc(75% - 3rem);
+  width: calc(75% - 3rem);
+}
+
+.about-content h3 {
+  font-size: 2.2rem;
+  color: var(--clr-teal);
+  margin-bottom: 1.25rem;
+}
+
+.about-content p {
+  color: var(--clr-charcoal);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+/* Qualifications 4-Column Grid */
+.qualifications-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 
-.price-box p:last-child {
+.qualification-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.7); /* Soft floating card tint */
+  padding: 1.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Logo Box Container */
+.qualification-card .logo-container {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.qualification-card img {
+  max-height: 90px;
+  max-width: 130px;
+  object-fit: contain;
+  display: block;
+}
+
+.qualification-card p {
+  font-size: 0.9rem;
+  color: var(--clr-charcoal);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 960px) {
+  .qualifications-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-image,
+  .about-content {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .about-image {
+    max-width: 320px;
+    margin: 0 auto; /* Centers Pam's photo nicely on mobile screens */
+  }
+
+  .qualifications-grid {
+    grid-template-columns: 1fr; /* Single column stack on mobile */
+    gap: 1.5rem;
+  }
+}
+
+/* ==========================================================
+   HOME | SALON IMAGE GALLERY
+   ========================================================== */
+
+.salon-gallery {
+   margin: 4rem 0;
+   text-align: center;
+}
+
+.salon-gallery h2 {
+   font-size: 2.2rem;
+   color: var(--clr-teal);
+   margin-bottom: 0.5rem;
+}
+
+.salon-gallery p {
+   color: var(--clr-charcoal);
+   margin-bottom: 2.5rem;
+}
+
+/* Modern CSS Columns Masonry Layout */
+.salon-gallery-grid {
+   column-count: 3;           /* 3 columns on desktop */
+   column-gap: 1.5rem;        /* Space between columns */
+   width: 100%;
+}
+
+.gallery-item {
+   break-inside: avoid;       /* Prevents images from splitting across columns */
+   margin-bottom: 1.5rem;     /* Vertical space between stacked items */
+   background-color: var(--clr-pure-white);
+   border-radius: 8px;
+   overflow: hidden;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img {
+   width: 100%;
+   height: auto;              /* Preserves natural portrait or landscape height */
+   display: block;
+   transition: transform 0.3s ease;
+}
+
+/* Subtle Hover Effects */
+.gallery-item:hover {
+   transform: translateY(-4px);
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item:hover img {
+   transform: scale(1.03);
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 960px) {
+   .salon-gallery-grid {
+      column-count: 2;        /* Switch to 2 columns on tablets */
+   }
+}
+
+@media (max-width: 600px) {
+   .salon-gallery-grid {
+      column-count: 1;        /* Stack single column on mobile */
+   }
+}
+
+/* ==========================================================
+   CONTACT SECTION & FORM STYLING
+   ========================================================== */
+
+.contact-details {
+  text-align: center;
+  max-width: 960px;
+  margin: 3rem auto;
+}
+
+.contact-details h2 {
+  font-size: 2.2rem;
+  color: var(--clr-teal);
+  margin-bottom: 0.75rem;
+}
+
+.contact-details p {
+  font-size: 1.05rem;
+  color: var(--clr-charcoal);
+  line-height: 1.6;
+}
+
+.contact-details address {
+  font-style: normal;
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background-color: var(--clr-pure-white);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: inline-block;
+  width: 100%;
+  max-width: 960px;
+}
+
+.contact-details address p {
+  margin-bottom: 0.5rem;
+}
+
+.contact-details address p:last-child {
   margin-bottom: 0;
 }
 
-.price-box small {
-  display: block;
-  margin-top: 0.5rem;
-  color: color-mix(in srgb, var(--clr-charcoal-dark) 70%, transparent);
-  font-size: 0.85rem;
+/* Contact Container Card Wrapper */
+.contact-container {
+  max-width: 960px;
+  margin: 3rem auto 5rem auto;
 }
 
-/* MOBILE RESPONSIVENESS */
+.contact-inner {
+  background-color: var(--clr-pure-white);
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+.contact-inner h2 {
+  font-size: 2.2rem;
+  color: var(--clr-teal);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.contact-subtitle {
+  text-align: center;
+  color: var(--clr-charcoal);
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Form Grid Layout */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.form-group {
+  width: 100%;
+}
+
+/* Inputs, Textareas & Select Styling */
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  color: var(--clr-charcoal);
+  background-color: var(--clr-warm-white);
+  border: 1px solid rgba(67, 73, 79, 0.2);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  border-color: var(--clr-teal);
+  background-color: var(--clr-pure-white);
+  box-shadow: 0 0 0 3px rgba(0, 170, 180, 0.15);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+/* Turnstile Widget Spacing */
+.cf-turnstile {
+  margin: 0.5rem 0;
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: var(--clr-teal);
+  color: var(--clr-pure-white);
+  font-family: var(--ff-body);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 170, 180, 0.25);
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: var(--clr-teal-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 170, 180, 0.35);
+}
+
+/* Responsive Form Adjustments */
 @media (max-width: 768px) {
-  .treatment-body {
-    flex-direction: column; /* Stacks text and price box vertically on mobile */
+  .contact-inner {
+    padding: 2rem 1.5rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
     gap: 1.25rem;
   }
-
-  .price-box {
-    width: 100%;
-    flex: 1 1 auto;
-  }
-}
-
-/* WHITE SPACE ON CONTACT PAGE */
-  .white-space {
-    height: 4rem;
 }
 
 /* ==========================================================
@@ -741,7 +1354,7 @@ nav a.active {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
   padding: 1.25rem 1.5rem;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: var(--clr-charcoal);
 }
 
 .footer-bottom p {
@@ -770,5 +1383,57 @@ nav a.active {
   .footer-heading,
   .footer-subheading {
     margin-bottom: 0.35rem; /* Tightens space right below the titles */
+  }
+}
+
+/* ==========================================================
+   BACK TO TOP BUTTON
+   ========================================================== */
+
+#backToTopBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99;
+  background-color: var(--clr-teal);
+  color: var(--clr-pure-white);
+  border: none;
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  
+  /* Initial state: hidden and invisible */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+}
+
+/* Hover and active states */
+#backToTopBtn:hover {
+  background-color: var(--clr-teal-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Active class applied via JavaScript when user scrolls down */
+#backToTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Mobile positioning adjustment */
+@media (max-width: 768px) {
+  #backToTopBtn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 2.8rem;
+    height: 2.8rem;
   }
 }

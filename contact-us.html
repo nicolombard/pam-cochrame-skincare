@@ -30,6 +30,9 @@
    <!-- CSS Stylesheet -->
    <link rel="stylesheet" href="css/styles.css">
 
+   <!-- JavaScript File linked in Head with 'defer' -->
+   <script src="js/script.js" defer></script>
+
    <!-- Google Fonts: Cormorant Garamond & Montserrat -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +48,7 @@
 
 </head>
 
-<body>
+<body class="contact-page">
 
    <!-- SITE HEADER -->
    <header>
@@ -59,7 +62,7 @@
             <ul>
                <li><a href="index.html">Home</a></li>
                <li><a href="treatments.html">Treatments</a></li>
-               <li><a href="about-us.html">About Us</a></li>
+               <li><a href="gallery.html">Gallery</a></li>
                <li><a href="contact-us.html" class="active">Contact</a></li>
             </ul>
          </nav>
@@ -70,7 +73,6 @@
    <section class="page-banner banner-contact">
       <div class="page-banner-content">
          <h1>Contact Us</h1>
-         <p>Book an appointment with Pam and start your rejuvination journey today</p>
       </div>
    </section>
 
@@ -88,6 +90,59 @@
             <p>Phone: <a href="tel:+27 82 460 5028">+27 82 460 5028</a></p>
          </address>
       </section>
+
+   <!-- CONTACT SECTION -->
+      <section id="contact" class="contact-container">
+         <div class="contact-inner">
+            <h2>Contact Us</h2>
+            <p class="contact-subtitle">Book an appointment with Pam and start your rejuvination journey today.</p>
+
+            <!-- Container for dynamically styled response banner -->
+            <div id="form-response" class="form-response" style="display: none;"></div>
+
+            <form class="contact-form" action="send-email.php" method="POST" id="contact-form">
+
+               <!-- Spam Check 1: Invisible Honeypot Field -->
+               <div style="display:none !important;" aria-hidden="true">
+                  <label for="website_address">Do not fill this out if you are human:</label>
+                  <input type="text" name="website_address" id="website_address" tabindex="-1" autocomplete="off">
+               </div>
+
+               <!-- Spam Check 2: Dynamic Form Render Timestamp -->
+               <input type="hidden" name="form_render_time" id="form_render_time" value="">
+
+               <div class="form-grid">
+                  <!-- Full Name -->
+                  <div class="form-group">
+                     <input type="text" id="name" name="name" placeholder="Full Name *" required>
+                  </div>
+
+                  <!-- Email Address -->
+                  <div class="form-group">
+                     <input type="email" id="email" name="email" placeholder="Email Address *" required>
+                  </div>
+
+                  <!-- Phone Number -->
+                  <div class="form-group" style="grid-column: 1 / -1;">
+                     <input type="tel" id="phone" name="phone" placeholder="Phone Number">
+                  </div>
+               </div>
+
+               <!-- Message -->
+               <div class="form-group">
+                  <textarea id="message" name="message" rows="5" placeholder="Message *" required></textarea>
+               </div>
+
+               <!-- Spam Check 3: Cloudflare Turnstile Widget -->
+               <div class="cf-turnstile" data-sitekey="0x4AAAAAAFGkFMHCOhx69xJt"></div>
+
+               <!-- Submit Button -->
+               <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+         </div>
+      </section>
+
+
    </main>
 
    <div class="white-space"></div>
@@ -129,6 +184,13 @@
          <p>&copy; 2026 Pam Cochrane Skincare. All rights reserved.</p>
       </div>
    </footer>
+
+   <!-- Back to Top Button -->
+   <button id="backToTopBtn" aria-label="Back to top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+         <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+   </button>
 
 </body>
 

@@ -30,6 +30,9 @@
    <!-- CSS Stylesheet -->
    <link rel="stylesheet" href="css/styles.css">
 
+   <!-- JavaScript File linked in Head with 'defer' -->
+   <script src="js/script.js" defer></script>
+
    <!-- Google Fonts: Cormorant Garamond & Montserrat -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +48,7 @@
 
 </head>
 
-<body>
+<body class="treatments-page">
 
    <!-- SITE HEADER -->
    <header>
@@ -59,7 +62,7 @@
             <ul>
                <li><a href="index.html">Home</a></li>
                <li><a href="treatments.html" class="active">Treatments</a></li>
-               <li><a href="about-us.html">About Us</a></li>
+               <li><a href="gallery.html">Gallery</a></li>
                <li><a href="contact-us.html">Contact</a></li>
             </ul>
          </nav>
@@ -70,37 +73,81 @@
    <section class="page-banner banner-treatments">
       <div class="page-banner-content">
          <h1>Our Skincare & Beauty Treatments</h1>
-         <p>Personalised facial, body sculpting, and advanced aesthetic solutions</p>
       </div>
    </section>
 
    <main>
-      <!-- SLIMMING TREATMENTS SECTION -->
-      <section id="slimming" class="treatment-category">
-         <div class="category-banner-block">
-            
-            <div class="category-banner-image">
-               <img src="images/woman1.jpg" alt="Body Sculpting and Slimming Therapy">
-            </div>
-            
-            <div class="category-banner-content">
-               <h2>Face & Body Sculpting, Slimming & Cellulite Control</h2>
-               <p class="category-banner-desc">
-                  Advanced Non-invasive Technology Engineered for Body Contouring, Smoothing Tissue, and Accelerating Fat Metabolism.
-               </p>
-            </div>
-
-         </div>
+      <!-- FEATURED TREATMENTS PREVIEW SECTION -->
+      <section class="featured-treatments">
          
-         <!-- Slimming Treatments > ENDERMOLOGIE ARTICLE -->
-         <article class="treatment-card">
-            <h3>Endermologie</h3>
+         <!-- 4 FEATURED CARDS WITH UNIQUE IMAGES -->
+         <div class="featured-grid">
+         
+            <!-- Card 1 linking -->
+            <a href="treatments.html#slimming" class="featured-card-link">
+               <div class="featured-card has-banner-overlay">
+                  <img src="images/featured-1.jpg" alt="Featured Treatment 1" class="card-bg-img">
+                  <div class="card-bottom-overlay">
+                     <p>Slimming, Face & Body Sculpting</p>
+                  </div>
+               </div>
+            </a>
 
-            <!-- Flex wrapper for side-by-side layout -->
-            <div class="treatment-body">
+            <!-- Card 2 linking -->
+            <a href="treatments.html#skin-treatments" class="featured-card-link">
+               <div class="featured-card has-banner-overlay">
+                  <img src="images/featured-2.jpg" alt="Featured Treatment 2" class="card-bg-img">
+                  <div class="card-bottom-overlay">
+                     <p>Advanced Skin Treatments</p>
+                  </div>
+               </div>
+            </a>
+
+            <!-- Card 3 linking -->
+            <a href="treatments.html#skin-peels" class="featured-card-link">
+               <div class="featured-card has-banner-overlay">
+                  <img src="images/featured-3.jpg" alt="Featured Treatment 3" class="card-bg-img">
+                  <div class="card-bottom-overlay">
+                     <p>Skin Peels, Facials, Laser & Waxing</p>
+                  </div>
+               </div>
+            </a>
+            
+            <!-- Card 4 linking -->
+            <a href="treatments.html#products" class="featured-card-link">
+               <div class="featured-card has-banner-overlay">
+                  <img src="images/featured-4.jpg" alt="Featured Treatment 4" class="card-bg-img">
+                  <div class="card-bottom-overlay">
+                     <p>Skincare Products we Stock</p>
+                  </div>
+               </div>
+            </a>
+         </div>   
+      </section>
+      
+      <!-- Treatment Header Section 1 -->
+      <section class="category-header" id="slimming">
+         <h2>Face & Body Sculpting, Slimming & Cellulite Control</h2>
+         <p>Experience personalised facial, body sculpting, and advanced aesthetic solutions. <br>
+            Pam offers state-of-the-art non-invasive body contouring treatments designed to accelerate fat metabolism and restore smooth, firm skin.
+         </p>
+      </section>
+
+      <!-- Treatment Cards Section 1 -->
+      <section class="treatments-section">
+         
+         <!-- Card 1: Image Left, Content & Price Right -->
+         <article class="treatment-card">
+            
+            <!-- Treatment Image -->
+            <div class="treatment-image">
+               <img src="images/treatments/endermologie.jpg" alt="Endermologie Body Treatment">
+            </div>
+            <!-- Treatment Content -->
+            <div class="card-body">
                <div class="treatment-content">
-                  <p>
-                     Endermologie is a successful slimming treatment used for smoothing and eliminating cellulite.
+                  <h4>Endermologie Cellulite Treatment</h4>
+                  <p>Endermologie is a successful slimming treatment used for smoothing and eliminating cellulite.
                      It also works well for treating muscle tension, as well as painful tendons and ligaments.
                      The Endermologie machine (CelluM6 LP) is a class 20 Therapeutic medical device.
                      It has been designed to work on soft tissue like no other device.
@@ -108,196 +155,234 @@
                      Depending on your personal needs, Pam will advise you on the number of treatments required.
                   </p>
                </div>
-
                <div class="price-box">
-                  <h4>Treatment and Pricing</h4>
-                  <p><strong>14 treatments including Endomologie</strong> R4,400</p>
-                  <p><strong>10 treatments</strong> R3,200</p>
-                  <p><small>Each treatment 30-45 minutes</small></p>
-               </div>
-            </div>
-
-         </article>
-
-         <!-- Slimming Treatments > RADIOFREQUENCY ARTICLE -->
-         <article class="treatment-card">
-            <h3>Radiofrequency (TriLopo)</h3>
-
-            <!-- Flex wrapper for side-by-side layout -->
-            <div class="treatment-body">
-               <div class="treatment-content">
                   <p>
-                     Trilipo is a face and body sculpting treatment that causes contraction of the muscle layer to soften and release fatty tissue.
-                     It accelerates fat metabolism and releases fat cells.
-                     It accelerates fat metabolism through simultaneous internal and external pressure.
+                     <span>14 Treatments incl. Endermologie</span>
+                     <span>R4,400</span>
+                  </p>
+                  <p>
+                     <span>10 Treatments</span>
+                     <span>R3,200</span>
+                  </p>
+                  <p>
+                     <small>Each treatment 30-45 minutes</small>
                   </p>
                </div>
-            
+            </div>
+         </article>
+
+         <!-- Card 2: Image Right, Content & Price Left -->
+         <article class="treatment-card">
+
+            <!-- Treatment Image -->
+            <div class="treatment-image">
+               <img src="images/treatments/trilipo.jpg" alt="TriLipo Treatment">
+            </div>
+            <!-- Treatment Content -->
+            <div class="card-body">
+               <div class="treatment-content">
+                  <h4>TriLipo - Radiofrequency</h4>
+                  <p>Trilipo is a face and body sculpting treatment that causes contraction of the muscle layer to soften and release fatty tissue.
+                     It accelerates fat metabolism and releases fat cells. It accelerates fat metabolism through simultaneous internal and external pressure.
+                  </p>
+               </div>
                <div class="price-box">
-                  <h4>Treatment and Pricing</h4>
-                  <p><strong>Course of 6 treatments</strong> R3,180</p>
+                  <p>
+                     <span>Course of 6 Treatments</span>
+                     <span>R3,180</span>
+                  </p>
                </div>
             </div>
-
          </article>
       </section>
 
-      <!-- FACIALS TREATMENTS SECTION -->
-      <section id="skin-treatments" class="treatment-category">
-         <div class="category-banner-block">
-            
-            <div class="category-banner-image">
-               <img src="images/woman1.jpg" alt="Personalised Skin Treatments for Healthier, Radiant Skin.">
-            </div>
-            
-            <div class="category-banner-content">
-               <h2>Advanced Face & Body Skin Treatments</h2>
-               <p class="category-banner-desc">
-                  Advanced, Personalised Skin Treatments for Healthier, Younger and Radiant Skin.
-               </p>
-            </div>
+      <!-- Treatment Header Section 2 -->
+      <section class="category-header" id="skin-treatments">
+         <h2>Advanced Face & Body Skin Treatments</h2>
+         <p>Advanced, Personalised Skin Treatments for Healthier, Younger and Radiant Skin.</p>
+      </section>
 
-         </div>
-
-         <!-- Facials Treatments > ENDERMOLIFT ARTICLE -->
+      <!-- Treatment Cards Section 2 -->
+      <section class="treatments-section">
+         
+         <!-- Card 3: Image Left, Content & Price Right -->
          <article class="treatment-card">
-            <h3>Endermolift Face Treatment</h3>
-
-            <!-- Flex wrapper for side-by-side layout -->
-            <div class="treatment-body">
+            
+            <!-- Treatment Image -->
+            <div class="treatment-image">
+               <img src="images/treatments/endermolift.jpg" alt="Endermolift Face Treatment">
+            </div>
+            <!-- Treatment Content -->
+            <div class="card-body">
                <div class="treatment-content">
-                  <p>
-                     Stimulates fibroblasts to produce collagen, elastin, and hyaluronic acid to firm skin at a deeper level.
-                  </p>
+                  <h4>Endermolift Face Treatment</h4>
+                  <p>Stimulates fibroblasts to produce collagen, elastin, and hyaluronic acid to firm skin at a deeper level.</p>
                </div>
-
                <div class="price-box">
-                  <h4>Treatment and Pricing</h4>
-                  <p><strong>The treament cost</strong> R600</p>
-                  <p><small>Treatment duration 60 minutes</small></p>
+                  <p>
+                     <span>The treatment cost</span>
+                     <span>R600</span>
+                  </p>
+                  <p>
+                     <small>Treatment duration 60 minutes</small>
+                  </p>
                </div>
             </div>
          </article>
 
-         <!-- Facials Treatments > GUINOT ARTICLE -->
+         <!-- Card 4: Image Left, Content & Price Right -->
          <article class="treatment-card">
-            <h3>Guinot Facial (Hydra Cleanse)</h3>
             
-            <!-- Flex wrapper for side-by-side layout -->
-            <div class="treatment-body">
+            <!-- Treatment Image -->
+            <div class="treatment-image">
+               <img src="images/treatments/guinot-facial.jpg" alt="Guinot Hydra Cleanse Facial">
+            </div>
+            <!-- Treatment Content -->
+            <div class="card-body">
                <div class="treatment-content">
-                  <p>
-                     Uses the Guinot Hydra Cleanse machine and specialized serum for a deep facial cleanse.
-                  </p>
+                  <h4>Guinot Facial (Hydra Cleanse)</h4>
+                  <p>This treatment uses the Guinot Hydra Cleanse machine and specialized serum for a deep facial cleanse.</p>
                </div>
-
                <div class="price-box">
-                  <h4>Treatment and Pricing</h4>
-                  <p><strong>The treament cost</strong> R550</p>
-                  <p><small>Treatment duration 45 minutes</small></p>
+                  <p>
+                     <span>The treatment cost</span>
+                     <span>R550</span>
+                  </p>
+                  <p>
+                     <small>Treatment duration 45 minutes</small>
+                  </p>
                </div>
             </div>
          </article>
 
-         <!-- Facials Treatments > HYDRADERMIE ARTICLE -->
+         <!-- Card 5: Image Left, Content & Price Right -->
          <article class="treatment-card">
-            <h3>Hydradermie</h3>
-
-            <!-- Flex wrapper for side-by-side layout -->
-            <div class="treatment-body">
+            
+            <!-- Treatment Image -->
+            <div class="treatment-image">
+               <img src="images/treatments/hydradermie.jpg" alt="Hydradermie Treatment">
+            </div>
+            <!-- Treatment Content -->
+            <div class="card-body">
                <div class="treatment-content">
-                  <p>
-                     A machine that provides and restores youth to dry, sensitive, mature or oily skin.
-                     It helps restore the sun damaged skin. We use dynamic ionisation transmitting energy to skin cells, insuring quick and effective distribution of active ingredients contained in the serum.
+                  <h4>Hydradermie</h4>
+                  <p>A machine that provides and restores youth to dry, sensitive, mature or oily skin. It helps restore the sun damaged skin.
+                     We use dynamic ionisation transmitting energy to skin cells, insuring quick and effective distribution of active ingredients contained in the serum.
                      The oxygenation effect stimulates cell activity followed by relaxing massage and application of serum.
                      Guinot products are recommended and available.
                   </p>
                </div>
-
                <div class="price-box">
-                  <h4>Treatment and Pricing</h4>
-                  <p><strong>The treament cost</strong> R1,500</p>
-                  <p><small>Treatment duration 75 minutes</small></p>
-               </div>
-            </div>
-         </article>
-
-         <!-- Facials Treatments > MICRONEEDLING ARTICLE -->
-         <article class="treatment-card">
-            <h3>Microneedling</h3>
-
-            <!-- Flex wrapper for side-by-side layout -->
-            <div class="treatment-body">
-               <div class="treatment-content">
                   <p>
-                     Essential treatment for skin restoration, acne, hair loss, and reversing sun-induced pigmentation.
+                     <span>The treatment cost</span>
+                     <span>R1,500</span>
+                  </p>
+                  <p>
+                     <small>Treatment duration 75 minutes</small>
                   </p>
                </div>
+            </div>
+         </article>
 
+         <!-- Card 6: Image Left, Content & Price Right -->
+         <article class="treatment-card">
+            
+            <!-- Treatment Image -->
+            <div class="treatment-image">
+               <img src="images/treatments/microneedling.jpg" alt="Microneedling Treatment">
+            </div>
+            <!-- Treatment Content -->
+            <div class="card-body">
+               <div class="treatment-content">
+                  <h4>Microneedling</h4>
+                  <p>This is an essential treatment for skin restoration, acne, hair loss, and reversing sun-induced pigmentation.</p>
+               </div>
                <div class="price-box">
-                  <h4>Treatment and Pricing</h4>
-                  <p><strong>Face and Neck treatment cost</strong> R1,850</p>
-                  <p><small>Treatment duration 90 minutes</small></p>
+                  <p>
+                     <span>Face and neck treatment cost</span>
+                     <span>R1,850</span>
+                  </p>
+                  <p>
+                     <small>Treatment duration 90 minutes</small>
+                  </p>
                </div>
             </div>
          </article>
 
-         <!-- Facials Treatments > ENERGIST ARTICLE -->
+         <!-- Card 7: Image Left, Content & Price Right -->
          <article class="treatment-card">
-            <h3>Energist</h3>
-
-            <!-- Flex wrapper for side-by-side layout -->
-            <div class="treatment-body">
+            
+            <!-- Treatment Image -->
+            <div class="treatment-image">
+               <img src="images/treatments/energist.jpg" alt="Energist Treatment">
+            </div>
+            <!-- Treatment Content -->
+            <div class="card-body">
                <div class="treatment-content">
+                  <h4>Energist</h4>
                   <p>
                      Many conditions caused by aging and sun damage can be successfully reversed using a yellow light from the Energist machine including age spots, freckles, pigmentation, skin texture and fine lines.
                      For hair removal, the light is heated to a temperature which inhibits hair growth and is a fast effective hair removal technique.
                      The Energist machine also treats active acne and stops bacterial infection.
                   </p>
                </div>
-
                <div class="price-box">
-                  <h4>Treatment and Pricing</h4>
-                  <p><strong>Treatment depends on the area, full face generally costs</strong> R900</p>
-                  <p><small>Treatment duration 30 minutes</small></p>
+                  <p>
+                     <span>Treatment depends on the area, full face generally costs</span>
+                     <span>R900</span>
+                  </p>
+                  <p>
+                     <small>Treatment duration 30 minutes</small>
+                  </p>
                </div>
             </div>
          </article>
 
-         <!-- Facials Treatments > MESOTHERAPY ARTICLE -->
+         <!-- Card 8: Image Left, Content & Price Right -->
          <article class="treatment-card">
-            <h3>Mesotherapy</h3>
-
-            <!-- Flex wrapper for side-by-side layout -->
-            <div class="treatment-body">
+            
+            <!-- Treatment Image -->
+            <div class="treatment-image">
+               <img src="images/treatments/mesotherapy.jpg" alt="Mesotherapy">
+            </div>
+            <!-- Treatment Content -->
+            <div class="card-body">
                <div class="treatment-content">
+                  <h4>Mesotherapy</h4>
                   <p>
                      Mesotherapy is the latest form of treatment to successfully introduce serums into the dermis to treat cellulite and fatty tissue, for example double chins.
                      It is the most effective and quickest treatment to gain results.
-                     It can also treat aging skin and a good way of sculpting face and fatty deposits under the chin and neck.
+                     It can also treat aging skin and a good way of sculpting face and fatty deposits under the chin and neck. 
                   </p>
                </div>
-
                <div class="price-box">
-                  <h4>Treatment and Pricing</h4>
-                  <p><strong>Double chin and neck treatment cost</strong> R1,000</p>
-                  <p><small>Treatment duration 30 minutes</small></p>
+                  <p>
+                     <span>Double chin and neck treatment cost</span>
+                     <span>R1,000</span>
+                  </p>
+                  <p>
+                     <small>Treatment duration 30 minutes</small>
+                  </p>
                </div>
             </div>
          </article>
 
-         <!-- Facials Treatments > CRYOLIFT ARTICLE -->
+         <!-- Card 9: Image Left, Content & Price Right -->
          <article class="treatment-card">
-            <h3>Cryolift</h3>
-
-            <!-- Flex wrapper for side-by-side layout -->
-            <div class="treatment-body">
+            
+            <!-- Treatment Image -->
+            <div class="treatment-image">
+               <img src="images/treatments/cryolift.jpg" alt="Cryolift Treatment">
+            </div>
+            <!-- Treatment Content -->
+            <div class="card-body">
                <div class="treatment-content">
+                  <h4>Cryolift</h4>
                   <p>
                      Cryo corrective treatment (freezing and warming) alternate biostimulation of the facial tissue for treating skin aging.
                      This is used to convert sugars in the skin into collagen.
                      After application of serums with biostimulation treatment for 30 minutes light emitting diode (LED) is applied with 3 different concentrated light.
-                     This may be followed bv a deep hydrating mask.
+                     This may be followed by a deep hydrating mask.
                   </p>
                   <ol>
                      <li>Blue light, bactericidal light to kill bacteria</li>
@@ -305,130 +390,141 @@
                      <li>Red light, to build collagen in skin cells.</li>
                   </ol>
                </div>
-
                <div class="price-box">
-                  <h4>Treatment and Pricing</h4>
-                  <p><strong>The treatment cost</strong> R1,390</p>
-                  <p><small>Treatment duration 45 minutes</small></p>
+                  <p>
+                     <span>The treatment cost</span>
+                     <span>R1,390</span>
+                  </p>
+                  <p>
+                     <small>Treatment duration 45 minutes</small>
+                  </p>
                </div>
             </div>
          </article>
       </section>
 
+      <!-- Treatment Header Section 3 -->
+      <section class="category-header" id="skin-peels">
+         <h2>Skin Peels, Facials, Laser & Waxing Treatments</h2>
+         <p>A Range of Professinal Skin Treatments to Enhance Your Natural Beauty.</p>
+      </section>
 
-      <!-- PRICE LIST MORE TREATMENTS SECTION -->
-      <section id="skin-peels" class="treatment-category">
-         <div class="category-banner-block">
-            
-            <div class="category-banner-image">
-               <img src="images/woman1.jpg" alt="Image of woman getting beauty treatment.">
-            </div>
-            
-            <div class="category-banner-content">
-               <h2>Skin Peels, Facials, Laser & Waxing Treatments</h2>
-               <p class="category-banner-desc">
-                  A Range of Professinal Skin Treatments to Enhance Your Natural Beauty.
-               </p>
-            </div>
-
-         </div>
+      <!-- Treatment Cards Section 3 -->
+      <section class="treatments-section">
 
          <!-- PRICE LIST ARTICLE | Skin Peels -->
-         <article class="treatment-card">
-
-            <div class="menu-column">
-               <h3>Skin Peels</h3>
-               <ul>
-                  <li><span>Pigmentation treatment (60 minutes)</span> <strong>R690</strong></li>
-                  <li><span>Sun Damage treatment (60 minutes)</span> <strong>R590</strong></li>
-                  <li><span>Diamond Peel treatment (60 minutes)</span> <strong>R450</strong></li>
-               </ul>
-
-               <h3>LED Light Therapy</h3>
-               <ul>
-                  <li><span>LED therapy after skin peel and Cryolift to enhance skin rejuvenation</span> <strong>R1,390</strong></li>
-               </ul>
+         <article class="treatment-card price-list-card">
+            <div class="treatment-image">
+               <img src="images/treatments/skin-peels.jpg" alt="Skin Peels">
             </div>
-
-            <!-- PRICE LIST ARTICLE | Facials -->
-            <div class="menu-column">
-               <h3>Facials</h3>
-               <ul>
-                  <li><span>Hydrating and Cleansing Facial</span> <strong>R690</strong></li>
-                  <li><span>Micro-needling and Skin Renewal with Plasma for pigmentation and aging</span> <strong>R2,500</strong></li>
-                  <li><span>Hydradermie Micro-massage with Lymphatic Drainage and Microlift</span> <strong>R1,590</strong></li>
-                  <li><span>Lymphatic Drainage and Hydradermie</span> <strong>R2,500</strong></li>
-                  <li><span>Hydra Clean Face</span> <strong>R550</strong></li>
-                  <li><span>Hydradermie Deluxe and Lifting</span> <strong>R1,590</strong></li>
-                  <li><span>Alchemy Facial customised to your personal skin needs e.g. anti-aging, pigmentation of sensitive facial</span> <strong>R1,200</strong></li>
-                  <li><span>Nova Micro-needling Facial</span> <strong>R1,250</strong></li>
-                  <li><span>Radio Frequency Face Sculpting witout serum</span> <strong>R700</strong></li>
-                  <li><span>E Two Radio Frequency, delivering and producing an increase in collagen and elastin rejuvenation</span> <strong>R4,500</strong></li>
-               </ul>
+            <div class="card-body">
+               <div class="treatment-content">
+                  <h3>Skin Peels</h3>
+                  <ul>
+                     <li><span>Pigmentation treatment (60 minutes)</span> <strong>R690</strong></li>
+                     <li><span>Sun Damage treatment (60 minutes)</span> <strong>R590</strong></li>
+                     <li><span>Diamond Peel treatment (60 minutes)</span> <strong>R450</strong></li>
+                     <li><span>LED Light Therapy after Skin Peel and Cryolift to enhance skin rejuvenation</span> <strong>R1,390</strong></li>
+                  </ul>
+               </div>
             </div>
+         </article>
 
-            <!-- PRICE LIST ARTICLE | Hair Removal & Laser -->
-            <div class="menu-column">
-               <h3>Laser Hair and Skin Treatments</h3>
-               <ul>
-                  <li><span>Under arms hair removal</span> <strong>R600</strong></li>
-                  <li><span>Bikini hair removal</span> <strong>R700</strong></li>
-                  <li><span>Full legs hair removal</span> <strong>R4,500</strong></li>
-                  <li><span>Half legs hair removal</span> <strong>R1,200</strong></li>
-                  <li><span>Arms hair removal (elbow to hands)</span> <strong>R700</strong></li>
-                  <li><span>Upper lip hair removal</span> <strong>R400</strong></li>
-                  <li><span>Eyebrows hair removal</span> <strong>R400</strong></li>
-                  <li><span>Laser Skin Rejuvenation, full face</span> <strong>R1,500</strong></li>
-                  <li><span>Laser Acne Treatment (Full face)</span> <strong>R1,500</strong></li>
-                  <li><span>Restoring hair with Microneedling and LED Light Treatment (5 treatments)</span> <strong>R7,000</strong></li>
-               </ul>
+         <!-- PRICE LIST ARTICLE | Facials -->
+         <article class="treatment-card price-list-card">
+            <div class="treatment-image">
+               <img src="images/treatments/facials.jpg" alt="Facials">
             </div>
-            
-            <!-- PRICE LIST ARTICLE | Waxing -->
-            <div class="menu-column">
-               <h3>Waxing</h3>
-               <ul>
-                  <li><span>Full legs</span> <strong>R900</strong></li>
-                  <li><span>Half legs (knees down)</span> <strong>R600</strong></li>
-                  <li><span>Under arms</span> <strong>R690</strong></li>
-               </ul>
+            <div class="card-body">
+               <div class="treatment-content">
+                  <h3>Facials</h3>
+                  <ul>
+                     <li><span>Hydrating and Cleansing Facial</span> <strong>R690</strong></li>
+                     <li><span>Micro-needling and Skin Renewal with Plasma for pigmentation and aging</span> <strong>R2,500</strong></li>
+                     <li><span>Hydradermie Micro-massage with Lymphatic Drainage and Microlift</span> <strong>R1,590</strong></li>
+                     <li><span>Lymphatic Drainage and Hydradermie</span> <strong>R2,500</strong></li>
+                     <li><span>Hydra Clean Face</span> <strong>R550</strong></li>
+                     <li><span>Hydradermie Deluxe and Lifting</span> <strong>R1,590</strong></li>
+                     <li><span>Alchemy Facial customised to your personal skin needs e.g. anti-aging, pigmentation of sensitive facial</span> <strong>R1,200</strong></li>
+                     <li><span>Nova Micro-needling Facial</span> <strong>R1,250</strong></li>
+                     <li><span>Radio Frequency Face Sculpting witout serum</span> <strong>R700</strong></li>
+                     <li><span>E Two Radio Frequency, delivering and producing an increase in collagen and elastin rejuvenation</span> <strong>R4,500</strong></li>
+                  </ul>
+               </div>
+            </div>
+         </article>
+
+         <!-- PRICE LIST ARTICLE | Hair Removal & Laser -->
+         <article class="treatment-card price-list-card">
+            <div class="treatment-image">
+               <img src="images/treatments/laser-hair-treatments.jpg" alt="Laser Hair and Skin Treatments">
+            </div>
+            <div class="card-body">
+               <div class="treatment-content">
+                  <h3>Laser Hair and Skin Treatments</h3>
+                  <ul>
+                     <li><span>Under arms hair removal</span> <strong>R600</strong></li>
+                     <li><span>Bikini hair removal</span> <strong>R700</strong></li>
+                     <li><span>Full legs hair removal</span> <strong>R4,500</strong></li>
+                     <li><span>Half legs hair removal</span> <strong>R1,200</strong></li>
+                     <li><span>Arms hair removal (elbow to hands)</span> <strong>R700</strong></li>
+                     <li><span>Upper lip hair removal</span> <strong>R400</strong></li>
+                     <li><span>Eyebrows hair removal</span> <strong>R400</strong></li>
+                     <li><span>Laser Skin Rejuvenation, full face</span> <strong>R1,500</strong></li>
+                     <li><span>Laser Acne Treatment (Full face)</span> <strong>R1,500</strong></li>
+                     <li><span>Restoring hair with Microneedling and LED Light Treatment (5 treatments)</span> <strong>R7,000</strong></li>
+                  </ul>
+               </div>
+            </div>
+         </article>
+
+         <!-- PRICE LIST ARTICLE | Waxing -->
+         <article class="treatment-card price-list-card">
+            <div class="treatment-image">
+               <img src="images/treatments/waxing.jpg" alt="Waxing">
+            </div>
+            <div class="card-body">
+               <div class="treatment-content">
+                  <h3>Waxing</h3>
+                  <ul>
+                     <li><span>Full legs</span> <strong>R900</strong></li>
+                     <li><span>Half legs (knees down)</span> <strong>R600</strong></li>
+                     <li><span>Under arms</span> <strong>R690</strong></li>
+                  </ul>
+               </div>
             </div>
          </article>
       </section>
 
-      <!-- PRODUCTS WE STOCK SECTION -->
-      <section id="products" class="treatment-category">
-         <div class="category-banner-block">
-            
-            <div class="category-banner-image">
-               <img src="images/products.jpg" alt="Image of skincare products.">
+      <!-- Treatment Header Section 4 -->
+      <section class="category-header" id="products">
+         <h2>Skincare Products we Stock</h2>
+         <p>High quality skincare products to take home.</p>
+      </section>
+
+      <!-- Treatment Cards Section 4 -->
+      <section class="treatments-section">
+
+         <!-- PRODUCTS ARTICLE | Products -->
+         <article class="treatment-card price-list-card products-card">
+            <div class="treatment-image">
+               <img src="images/treatments/products.jpg" alt="Skincare Products">
             </div>
-            
-            <div class="category-banner-content">
-               <h2>Skincare Products we Stock</h2>
-               <p class="category-banner-desc">
-                  Great skincare products to take home.
-               </p>
-            </div>
-
-         </div>
-
-         <!-- Facials Treatments > ENDERMOLIFT ARTICLE -->
-         <article class="treatment-card">
-            <h3>Products</h3>
-
-            <!-- Flex wrapper for side-by-side layout -->
-            <div class="treatment-body">
-               <ul>
-                  <li>Lamelle products specialising in Lamelle treatments.</li>
-                  <li>Guinot Age Summim for face.</li>
-                  <li>Activation Plasma Concentrate customised bespoke for your skin needs.</li>
-                  <li>Hydra Summum Treatment for hydrating and plumping.</li>
-                  <li>Age Summum for anti-aging providing you with youthful skin results.</li>
-               </ul>
+            <div class="card-body">
+               <div class="treatment-content">
+                  <h3>Products</h3>
+                  <ul>
+                     <li><span>Lamelle products specialising in Lamelle treatments.</span></li>
+                     <li><span>Guinot Age Summum for face.</span></li>
+                     <li><span>DActivation Plasma Concentrate customised bespoke for your skin needs.</span></li>
+                     <li><span>Hydra Summum Treatment for hydrating and plumping.</span></li>
+                     <li><span>Age Summum for anti-aging providing you with youthful skin results.</span></li>
+                  </ul>
+               </div>
             </div>
          </article>
       </section>
+   
    </main>
    
    <!-- FOOTER -->
@@ -468,6 +564,13 @@
          <p>&copy; 2026 Pam Cochrane Skincare. All rights reserved.</p>
       </div>
    </footer>
+
+   <!-- Back to Top Button -->
+   <button id="backToTopBtn" aria-label="Back to top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+         <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+   </button>
 
 </body>
 
