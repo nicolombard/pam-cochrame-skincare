@@ -1276,10 +1276,38 @@ body.contact-page {
 }
 
 /* ==========================================================
+   FORM RESPONSE STYLES  |  Success / Error
+   ========================================================== */
+
+.form-response {
+   text-align: center;
+   padding: 15px 20px;
+   margin: 20px auto;
+   border-radius: 6px;
+   max-width: 100%;
+   font-size: 0.95rem;
+   line-height: 1.5;
+}
+
+/* Success State (Green) */
+.form-response.success {
+   background-color: #e8f5e9;
+   color: #2e7d32;
+   border: 1px solid #c8e6c9;
+}
+
+/* Error State (Red) */
+.form-response.error {
+   background-color: #ffebee;
+   color: #c62828;
+   border: 1px solid #ffcdd2;
+}
+
+/* ==========================================================
    GLOBAL FOOTER STYLES
    ========================================================== */
 
-   .site-footer {
+.site-footer {
   background-color: var(--clr-charcoal-dark);
   color: var(--clr-warm-white);
   padding-top: 3rem;
@@ -1390,7 +1418,7 @@ body.contact-page {
    BACK TO TOP BUTTON
    ========================================================== */
 
-#backToTopBtn {
+#to-top-button {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
@@ -1415,14 +1443,14 @@ body.contact-page {
 }
 
 /* Hover and active states */
-#backToTopBtn:hover {
+#to-top-button:hover {
   background-color: var(--clr-teal-dark);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Active class applied via JavaScript when user scrolls down */
-#backToTopBtn.show {
+#to-top-button.show {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -1430,7 +1458,7 @@ body.contact-page {
 
 /* Mobile positioning adjustment */
 @media (max-width: 768px) {
-  #backToTopBtn {
+  #to-top-button {
     bottom: 1.5rem;
     right: 1.5rem;
     width: 2.8rem;
